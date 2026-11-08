@@ -32,7 +32,7 @@ def main():
         metrics[path.name] = count
     if len(metrics) != 6:
         raise ValueError("Expected six complete examples")
-    parts = ["# fisher-moss-prompt-expander 完整版", "由技能目录统一导出。包含规则、完整案例、局部模块、验收记录、参考素材名称与导出脚本；本文档不嵌入图片。"]
+    parts = ["# moss-prompt-expander 完整版", "由技能目录统一导出。包含规则、完整案例、局部模块、验收记录、参考素材名称与导出脚本；本文档不嵌入图片。"]
     ordered = sorted(files, key=lambda p: (p.name != "SKILL.md", p.relative_to(root).as_posix()))
     for path in ordered:
         relative = path.relative_to(root)
@@ -70,8 +70,8 @@ def main():
             language = "python" if path.suffix == ".py" else "yaml"
             parts.append(f"````{language}\n{content}\n````")
     document = "\n\n".join(parts) + "\n"
-    (output / "fisher-moss-prompt-expander-完整版.md").write_text(document, encoding="utf-8")
-    archive_path = output / "fisher-moss-prompt-expander.zip"
+    (output / "moss-prompt-expander-完整版.md").write_text(document, encoding="utf-8")
+    archive_path = output / "moss-prompt-expander.zip"
     with zipfile.ZipFile(archive_path, "w", zipfile.ZIP_DEFLATED) as archive:
         for path in files:
             archive.write(path, Path(root.name) / path.relative_to(root))
@@ -81,7 +81,7 @@ def main():
             if archive.read(name) != path.read_bytes():
                 raise ValueError(f"Archive mismatch: {name}")
     report = {"full_examples_han_characters": metrics, "source_files": len(files), "sha256": {p.relative_to(root).as_posix(): hashlib.sha256(p.read_bytes()).hexdigest() for p in files}}
-    (output / "fisher-moss-prompt-expander-build.json").write_text(json.dumps(report, ensure_ascii=False, indent=2), encoding="utf-8")
+    (output / "moss-prompt-expander-build.json").write_text(json.dumps(report, ensure_ascii=False, indent=2), encoding="utf-8")
     print(json.dumps({"files": len(files), "examples": metrics, "archive_verified": True}, ensure_ascii=False))
 
 

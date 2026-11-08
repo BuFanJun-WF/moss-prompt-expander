@@ -6,7 +6,7 @@
 
 中文 SKILL · ComfyUI 英文 Caption 模板 · 图像与提示词配对案例
 
-[快速开始](#快速开始) · [案例画廊](docs/gallery.md) · [完整文档](docs/fisher-moss-prompt-expander-完整版.md) · [下载发布包](https://github.com/Work-Fisher/fisher-moss-prompt-expander/releases/latest)
+[快速开始](#快速开始) · [案例画廊](docs/gallery.md) · [完整文档](docs/moss-prompt-expander-完整版.md) · [下载发布包](https://github.com/Work-Fisher/fisher-moss-prompt-expander/releases/latest)
 
 ![图像作品总览](assets/overview.jpg)
 
@@ -24,9 +24,9 @@
 
 | 你要做什么 | 使用哪个文件 | 输出 |
 |---|---|---|
-| 在支持 Skills 的 Agent 中，把一句话或参考图展开 | [fisher-moss-prompt-expander](skills/fisher-moss-prompt-expander/SKILL.md) | 默认详细中文提示词；自由创作约 1500—2500 汉字 |
+| 在支持 Skills 的 Agent 中，把一句话或参考图展开 | [moss-prompt-expander](skills/moss-prompt-expander/SKILL.md) | 默认详细中文提示词；自由创作约 1500—2500 汉字 |
 | 在 ComfyUI 的文本扩写节点里直接使用 | [ComfyUI 精简执行模板](templates/MOSS-Image_ComfyUI扩写提示词.md) | 英文 Caption，指定画面文字保留原语言 |
-| 阅读完整方法与案例 | [SKILL 完整单文件 MD](docs/fisher-moss-prompt-expander-完整版.md) | 规则、六篇长案例、局部模块和验收记录 |
+| 阅读完整方法与案例 | [SKILL 完整单文件 MD](docs/moss-prompt-expander-完整版.md) | 规则、六篇长案例、局部模块和验收记录 |
 | 研究 Caption / Layout 和编译流程 | [MOSS-Image 完整参考模板](templates/MOSS-Image中文提示词扩写模板.md) | 改编模板、案例与上游编译器附录 |
 
 本项目负责生成**提示词文本**，不自动调用生图服务。名称中的 MOSS 为项目命名；这是社区整理与改编项目，并非 OpenMOSS 官方插件。
@@ -35,10 +35,10 @@
 
 ### 方式一：安装 SKILL
 
-下载仓库或发布包，将 `skills/fisher-moss-prompt-expander` 整个目录复制到你的 Agent 的技能目录。Codex 通常使用 `~/.codex/skills/`，重新打开会话后调用：
+下载仓库或发布包，将 `skills/moss-prompt-expander` 整个目录复制到你的 Agent 的技能目录。Codex 通常使用 `~/.codex/skills/`，重新打开会话后调用：
 
 ```text
-使用 $fisher-moss-prompt-expander：
+使用 $moss-prompt-expander：
 两个女生在咖啡店喝咖啡，然后手持自拍。
 ```
 
@@ -92,14 +92,14 @@ flowchart LR
 
 SKILL 包含 6 篇完整长例（正文约 1591—2090 汉字）以及专项短模块。短模块示范局部难点，不是默认交付长度。
 
-已执行结构与内部链接校验，并保留自拍、多人动作、水墨标题、参考图关系及双角色三视图等文本试跑记录。咖啡店自拍原稿与定向修订稿都保留，详见 [验收记录](skills/fisher-moss-prompt-expander/validation/README.md)。
+已执行结构与内部链接校验，并保留自拍、多人动作、水墨标题、参考图关系及双角色三视图等文本试跑记录。咖啡店自拍原稿与定向修订稿都保留，详见 [验收记录](skills/moss-prompt-expander/validation/README.md)。
 
 并非所有分支都已实测；本次 SKILL 更新未进行指定目标生图模型的完整回归测试。字数是文本详尽度设置，不是模型的最佳输入长度；请按实际上下文容量使用。
 
 ## 目录
 
 ```text
-skills/fisher-moss-prompt-expander/  可安装技能、规则与教学案例
+skills/moss-prompt-expander/  可安装技能、规则与教学案例
 templates/                         ComfyUI 模板与完整参考模板
 docs/                              单文件完整文档与画廊
 examples/                          每张展示图对应的原始提示词
